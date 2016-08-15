@@ -1,0 +1,108 @@
+\documentclass{article} % Type of document set as article
+
+%The following lines are used to set text color for entire document
+%-------------------------------------------------------
+\usepackage{xcolor}
+
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+\definecolor{regulargrey}{cmyk}{0.00, 0.00, 0.00, 0.94} % Defining the color as regulargrey
+\AtBeginDocument{\globalcolor{regulargrey}} % Global text color set to regulargrey
+%-------------------------------------------------------
+
+
+
+% Import pre-made packages used for various reasons
+\usepackage{color} 
+\usepackage{array} % For table specs manipulation
+\usepackage{tabularx}
+\usepackage{colortbl} 
+\usepackage[english]{babel} % For setting language of dummy text to English
+\usepackage{blindtext, fontspec, setspace} % For dummy text, font specification, margin setting
+\usepackage{lipsum} % For horizon line separator
+\usepackage{float} % For images to be set in specific position
+\usepackage[absolute]{textpos} % For positioning items
+\usepackage{graphicx} % For impoting pdf, images etc
+%\usepackage{mathtools}
+\usepackage{amssymb,amsfonts,amsmath}
+
+\usepackage{supertabular, longtable}
+\usepackage[singlelinecheck=off]{caption}  % For longtable better captioning
+
+% The following is needed to allow setting of text position on page
+%- -------------------------------------------------
+\setlength{\TPHorizModule}{1in}
+\setlength{\TPVertModule}{1in}
+%\setlength{\TPVertModule}{\TPHorizModule}
+%\textblockorigin{10mm}{10mm} % start everything near the top-left corner
+\setlength{\parindent}{0pt}
+%---------------------------------------------------
+
+
+% Creating other specific colors wished to be used in document
+\definecolor{red}{cmyk}{0.0000, 0.4703, 0.6393, 0.1412}
+\definecolor{green}{cmyk}{1.00, 0.10, 1.00, 0.10}
+\definecolor{lightgrey}{cmyk}{0.00, 0.00, 0.00, 0.20}
+\definecolor{mediumgrey}{cmyk}{0.00, 0.00, 0.00, 0.60}
+
+
+% Creating other specific fonts wished to be used in document
+\font\A="Plantin Std" at 8.5pt
+
+
+% Special
+\font\DATASMALL="Helvetica Neue LT Std 55 Roman" at 7pt
+\font\DATAHEAD="Helvetica Neue LT Std 75 Bold" at 7.5pt
+
+
+% Create some document position variables
+\usepackage{fp}
+\FPset\LEFTMARGIN{0.54}
+
+
+\newcommand*{\subsectionspacebefore}{8pt}
+
+% Setting global margins, font & line spacing
+\usepackage[margin=3.25in, bottom=2.2cm] {geometry}
+\setmainfont{Plantin Std}  
+\setstretch{0.85} % Set line spacing
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% ACTUAL DOCUMENT BEGINS
+
+\begin{document}
+
+% PROFILE
+
+
+% STOCK DESCRIPTION
+
+\begin{textblock}{7.3}({\LEFTMARGIN},1.1781) % Section width & position(horizontal,vertical) on page
+\A
+\color{regulargrey}
+Test Table
+
+
+\vspace{\subsectionspacebefore}
+
+
+\begin{longtable}{p{0.3\textwidth}|p{0.1\textwidth}|p{0.075\textwidth}|p{0.07\textwidth}|p{0.07\textwidth}|p{0.08\textwidth}|p{0.15\textwidth}}
+\arrayrulecolor{lightgrey}
+\color{regulargrey}
+\DATAHEAD Stock & \DATAHEAD Country & \DATAHEAD 30D Ret. & \DATAHEAD 3M Ret. & \DATAHEAD 6M Ret. & \DATAHEAD 12M Ret. & \DATAHEAD 12M Chart \\ \hline 
+\endfirsthead 
+\DATASMALL \color{regulargrey} Banks DIH Limited & \DATASMALL \color{regulargrey} Guyana & \DATASMALL \color{green} +4.39\% & \DATASMALL \color{red} -7.00\% & \DATASMALL \color{green} +5.69\% & \DATASMALL \color{green} +9.68\% & \DATASMALL \color{mediumgrey} NA \\ \hline 
+\DATASMALL \color{regulargrey} Banks Holdings Limited & \DATASMALL \color{regulargrey} Barbados & \DATASMALL \color{green} +5.39\% & \DATASMALL \color{green} +4.00\% & \DATASMALL \color{red} -7.69\% & \DATASMALL \color{green} +4.68\% & \DATASMALL \color{mediumgrey} NA \\ \hline 
+\DATASMALL \color{regulargrey} Commonwealth Brewery Limited & \DATASMALL \color{regulargrey} Bahamas & \DATASMALL \color{green} +3.39\% & \DATASMALL \color{red} -3.00\% & \DATASMALL \color{green} +5.69\% & \DATASMALL \color{green} +5.68\% & \DATASMALL \color{mediumgrey} NA \\ \hline 
+\DATASMALL \color{regulargrey} Swuriname Brewery & \DATASMALL \color{regulargrey} Suriname & \DATASMALL \color{green} +1.39\% & \DATASMALL \color{green} +2.00\% & \DATASMALL \color{green} +8.69\% & \DATASMALL \color{mediumgrey} 0.00\% & \DATASMALL \color{mediumgrey} NA \\ \hline 
+
+\hline 
+\end{longtable}
+
+\end{textblock}
+
+\end{document}
